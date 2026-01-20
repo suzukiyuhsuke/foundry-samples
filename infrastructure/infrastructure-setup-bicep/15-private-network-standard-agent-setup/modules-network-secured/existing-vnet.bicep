@@ -61,12 +61,14 @@ output debugExistingSubnets array = map(existingVNet.properties.subnets, subnet 
 resource existingAgentSubnet 'Microsoft.Network/virtualNetworks/subnets@2024-05-01' existing = if (agentSubnetExists) {
   name: agentSubnetName
   parent: existingVNet
+  scope: resourceGroup(vnetSubscriptionId, vnetResourceGroupName)
 }
 
 // Reference existing PE subnet if it exists
 resource existingPeSubnet 'Microsoft.Network/virtualNetworks/subnets@2024-05-01' existing = if (peSubnetExists) {
   name: peSubnetName
   parent: existingVNet
+  scope: resourceGroup(vnetSubscriptionId, vnetResourceGroupName)
 }
 
 // Create the agent subnet only if it doesn't exist
