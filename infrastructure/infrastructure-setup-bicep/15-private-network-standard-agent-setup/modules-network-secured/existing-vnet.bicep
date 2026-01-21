@@ -29,12 +29,6 @@ param agentSubnetName string = 'agent-subnet'
 @description('The name of Private Endpoint subnet')
 param peSubnetName string = 'pe-subnet'
 
-@description('Address prefix for the agent subnet (only needed if creating new subnet)')
-param agentSubnetPrefix string = ''
-
-@description('Address prefix for the private endpoint subnet (only needed if creating new subnet)')
-param peSubnetPrefix string = ''
-
 // Reference the existing virtual network
 resource existingVNet 'Microsoft.Network/virtualNetworks@2024-05-01' existing = {
   name: vnetName
